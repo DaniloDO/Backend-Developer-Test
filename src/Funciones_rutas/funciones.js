@@ -5,13 +5,14 @@ export const createFunction = (req, res) => {
     let body = req.body;
     let {titulo, autor, descripcionGrafica, contenido} = req.body;
     let {imagen, categoria, fechaPublicacion, usuario} = req.body;
+    let {usuario_nombre, usuario_nombre_autores} = req.body
 
     req.getConnection((err, connection) => {
         if(err) {
             res.send(err);
             return next(err);
         }
-        connection.query(`INSERT INTO Post (Titulo, Autor, DescripcionGrafica, Contenido, Imagen, Categoria, FechaPublicacion, Usuario) VALUES ('${titulo}', '${autor}', '${descripcionGrafica}', '${contenido}', '${imagen}', '${categoria}', '${fechaPublicacion}', '${usuario}')`, (err, data) =>{
+        connection.query(`INSERT INTO Post (Titulo, Autor, DescripcionGrafica, Contenido, Imagen, Categoria, FechaPublicacion, Usuario) VALUES ('${titulo}', '${autor}', '${descripcionGrafica}', '${contenido}', '${imagen}', '${categoria}', '${fechaPublicacion}', '${usuario}'), '${usuario_nombre}', '${usuario_nombre_autores}'`, (err, data) =>{
             if(err){
                 console.log(err);
                 res.send(err);

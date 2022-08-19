@@ -1,0 +1,219 @@
+{
+	"info": {
+		"_postman_id": "fc01c04f-5251-40e9-95dd-3c90133f0d1e",
+		"name": "Backend Developer Test",
+		"description": "Esta API tiene como finalidad permitir ejecutar operaciones ***CRUD*** (*Create, Read, Update, Delete*) sobre una base de datos dónde se almacenan las publicaciones de un Blog perteneciente a una página web.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20322177"
+	},
+	"item": [
+		{
+			"name": "Servidor Activo",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						""
+					]
+				},
+				"description": "Este endpoint funciona para verificar el funcionamiento del servidor."
+			},
+			"response": [
+				{
+					"name": "Servidor Activo",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								""
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "html",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "text/html; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "16"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"10-ZEWca08Ca+JFhT3RVpFLvbBlkZs\""
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 18 Aug 2022 16:56:06 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "Servidor activo"
+				}
+			]
+		},
+		{
+			"name": "Operaciones CRUD",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/CRUD",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"CRUD"
+					]
+				},
+				"description": "Endpoint que tiene la funciónd de verificar el funcionamiento del router para efectuar las operaciones CRUD."
+			},
+			"response": []
+		},
+		{
+			"name": "Create",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"titulo\": \"Post-Inicial\",\n    \"autor\": \"Danilo\",\n    \"descripcionGrafica\": \"Prueba\",\n    \"contenido\": \"Educativo-Basico\",\n    \"imagen\": \"\",\n    \"categoria\": \"Tecnologia\",\n    \"fechaPublicacion\": \"2022-08-19\",\n    \"usuario\": \"Franco\",\n    \"usuario_nombre\": \"Danilo\",\n    \"usuario_nombre_autores\": \"Franco\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/CRUD/Create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"CRUD",
+						"Create"
+					]
+				},
+				"description": "Permite realizar una entrada en la base de datos para almacenar un nuevo Post."
+			},
+			"response": []
+		},
+		{
+			"name": "Read",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/CRUD/Read/:titulo",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"CRUD",
+						"Read",
+						":titulo"
+					],
+					"variable": [
+						{
+							"key": "titulo",
+							"value": "\"Post-Inicial\""
+						}
+					]
+				},
+				"description": "Permite leer cualquiera de los Posts almacenados en la base de datos usando como parámetro el título que le identifica"
+			},
+			"response": []
+		},
+		{
+			"name": "Update",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/CRUD/Update/:titulo",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"CRUD",
+						"Update",
+						":titulo"
+					],
+					"variable": [
+						{
+							"key": "titulo",
+							"value": "\"Prueba de actualizacion\""
+						}
+					]
+				},
+				"description": "Permite actualizar cualquiera de los Posts almacenados en la base de datos usando como parámetro el título que le identifica"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/CRUD/Delete/:titulo",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"CRUD",
+						"Delete",
+						":titulo"
+					],
+					"variable": [
+						{
+							"key": "titulo",
+							"value": "\"Prueba de borrado\""
+						}
+					]
+				},
+				"description": "Permite elimininar cualquiera de los Posts almacenados en la base de datos usando como parámetro el título que le identifica"
+			},
+			"response": []
+		}
+	]
+}
