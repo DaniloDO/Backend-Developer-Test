@@ -12,7 +12,12 @@ export const createFunction = (req, res) => {
             return next(err);
         }
         connection.query(`INSERT INTO Post (Titulo, Autor, DescripcionGrafica, Contenido, Imagen, Categoria, FechaPublicacion, Usuario) VALUES ('${titulo}', '${autor}', '${descripcionGrafica}', '${contenido}', '${imagen}', '${categoria}', '${fechaPublicacion}', '${usuario}')`, (err, data) =>{
-            res.json(data)
+            if(err){
+                console.log(err);
+                res.send(err);
+                return next(err)
+            }
+            res.send(data)
         });
     });
 };
@@ -23,10 +28,17 @@ export const readFunction = (req, res, next) => {
 
     req.getConnection((err, connection) => {
         if(err) {
-            res.send(err)
+            console.log(err)
+            res.send(err);
             return next(err);
         }
         connection.query(`SELECT ${titulo} FROM Post`, (err, data) =>{
+            if(err){
+                console.log(err);
+                res.send(err);
+                return next(err)
+            }
+            console.log(data);
             res.send(data)
         });
     });
@@ -43,6 +55,11 @@ export const updateFunction = (req, res) => {
             return next(err);
         }
         connection.query(`UPDATE Post SET Autor = '${autor}', DescripcionGrafica = '${descripcionGrafica}', Contenido = '${contenido}', Imagen = '${imagen}', Categoria = '${categoria}', FechaPublicacion = '${fechaPublicacion}', Usuario = '${usuario}' WHERE ${titulo}`, (err, data) =>{
+            if(err){
+                console.log(err);
+                res.send(err);
+                return next(err)
+            }
             res.send(data)
         });
     });
@@ -59,6 +76,11 @@ export const deleteFunction = (req, res) => {
             return next(err);
         }
         connection.query(`DELETE FROM Post WHERE ${titulo}`, (err, data) =>{
+            if(err){
+                console.log(err);
+                res.send(err);
+                return next(err)
+            }
             res.send(data)
         });
     });  
